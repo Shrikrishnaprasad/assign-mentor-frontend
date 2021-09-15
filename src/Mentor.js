@@ -17,6 +17,7 @@ export default function Mentor() {
       <h1 className="text-center">Mentor</h1>
 
       <br />
+      <h4>Assign the students for a mentor</h4>
       <div className="row">
         <div className=" col-sm-12 input-group mb-3">
           <div className="input-group-prepend">
