@@ -1,9 +1,30 @@
 import "./styles.css";
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 export default function MentorDetails() {
   const history = useHistory();
+  const { id } = useParams();
+  const [mentor, setMentor] = useState({});
+  useEffect(() => {
+    const headersList = {
+      Accept: "*/*"
+    };
+
+    // getting all the mentors
+    fetch(`http://localhost:5000/mentor/get/${id}`, {
+      method: "GET",
+      headers: headersList
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        setMentor(data);
+        //data?.studentsAssigned?.map((id) => getName(id));
+      })
+      .catch((e) => console.log(e));
+  }, []);
 
   return (
     <div className="container">
@@ -12,13 +33,29 @@ export default function MentorDetails() {
       </button>
       <h1 className="text-center">Mentor Details</h1>
       <br />
-      <ul className="list-group">
-        <li className="list-group-item">Cras justo odio</li>
-        <li className="list-group-item">Dapibus ac facilisis in</li>
-        <li className="list-group-item">Morbi leo risus</li>
-        <li className="list-group-item">Porta ac consectetur ac</li>
-        <li className="list-group-item">Vestibulum at eros</li>
-      </ul>
+      {mentor.length !== 0 ? (
+        <ul className="list-group">
+          <li className="list-group-item">
+            <b>Name</b> - {mentor.name}
+          </li>
+          <li className="list-group-item">
+            <b>Email</b> - {mentor.email}
+          </li>
+          <li className="list-group-item">
+            <b>No.of.Students</b> - {mentor.studentsAssigned?.length}
+          </li>
+          <li className="list-group-item">
+            <b>Students-Id</b> -{" "}
+            {mentor?.studentsAssigned?.map((student, index) => (
+              <>
+                <h6>{student}</h6>
+              </>
+            ))}
+          </li>
+        </ul>
+      ) : (
+        <h3 className="text-center">Loading...</h3>
+      )}
     </div>
   );
 }

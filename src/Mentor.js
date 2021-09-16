@@ -78,7 +78,8 @@ export default function Mentor() {
         setMentor(null);
         setStudents(null);
         setAssign(!assign);
-      });
+      })
+      .catch((e) => console.log(e));
   }
   return (
     <div className="container mentor">
