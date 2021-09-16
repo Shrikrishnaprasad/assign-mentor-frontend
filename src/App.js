@@ -4,12 +4,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Mentor from "./Mentor";
 import Students from "./Students";
 import Home from "./Home";
+import MentorDetails from "./MentorDetails";
 
 export default function App() {
   return (
     <div className="App">
       <Router>
-        <nav className="navbar navbar-expand navbar-dark bg-primary">
+        <nav className="navbar navbar-expand sticky-top navbar-dark bg-success">
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item ">
@@ -32,8 +33,11 @@ export default function App() {
         </nav>
         <br />
         <Switch>
-          <Route path="/mentor">
+          <Route exact path="/mentor">
             <Mentor />
+          </Route>
+          <Route path="/mentor/:id">
+            <MentorDetails />
           </Route>
           <Route path="/students">
             <Students />

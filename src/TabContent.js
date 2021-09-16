@@ -3,8 +3,8 @@ import React from "react";
 
 export default function TabContent({ tab1 }) {
   return (
-    <div class="tab-content">
-      <div class={`tab-pane fade  ${tab1 && "show active"}`}>
+    <div className="tab-content">
+      <div className={`tab-pane fade  ${tab1 && "show active"}`}>
         <div className="card bg-light mb-3">
           <div className="card-header">
             <h4>Create a new mentor</h4>
@@ -32,7 +32,7 @@ export default function TabContent({ tab1 }) {
           </div>
         </div>
       </div>
-      <div class={`tab-pane fade  ${!tab1 && "show active"}`}>
+      <div className={`tab-pane fade  ${!tab1 && "show active"}`}>
         <div className="card bg-light mb-3">
           <div className="card-header">
             <h4>Create a new student</h4>

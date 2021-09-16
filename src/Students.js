@@ -21,7 +21,9 @@ export default function Students() {
       <div className="row">
         <div className=" col-sm-12 input-group mb-3">
           <div className="input-group-prepend">
-            <label className="input-group-text">Student</label>
+            <label className="input-group-text" htmlFor="">
+              Student
+            </label>
           </div>
           <Select
             options={options}
@@ -33,7 +35,9 @@ export default function Students() {
         </div>
         <div className=" col-sm-12 input-group mb-3">
           <div className="input-group-prepend">
-            <label className="input-group-text">Mentor</label>
+            <label className="input-group-text" htmlFor="">
+              Mentor
+            </label>
           </div>
           <Select
             options={options}

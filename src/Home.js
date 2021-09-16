@@ -26,7 +26,7 @@ export default function Home() {
             href="#home"
             onClick={() => setTab1(false)}
           >
-            Add-Students
+            Add-Student
           </a>
         </li>
       </ul>
