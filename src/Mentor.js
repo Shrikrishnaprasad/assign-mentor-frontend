@@ -76,7 +76,6 @@ export default function Mentor() {
         return response.json();
       })
       .then(function (data) {
-        //console.log(data);
         alert(data);
         setMentor(null);
         setStudents(null);
