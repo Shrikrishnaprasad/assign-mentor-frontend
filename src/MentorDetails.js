@@ -12,7 +12,7 @@ export default function MentorDetails() {
     };
 
     // getting all the mentors
-    fetch(`http://localhost:5000/mentor/get/${id}`, {
+    fetch(`https://assign-mentor-and-students.herokuapp.com/mentor/get/${id}`, {
       method: "GET",
       headers: headersList
     })
@@ -36,19 +36,20 @@ export default function MentorDetails() {
       {mentor.length !== 0 ? (
         <ul className="list-group">
           <li className="list-group-item">
-            <b>Name</b> - {mentor.name}
+            <b>Name</b> - {mentor.name || "Loading..."}
           </li>
           <li className="list-group-item">
-            <b>Email</b> - {mentor.email}
+            <b>Email</b> - {mentor.email || "Loading..."}
           </li>
           <li className="list-group-item">
-            <b>No.of.Students</b> - {mentor.studentsAssigned?.length}
+            <b>No.of.Students</b> -{" "}
+            {mentor.studentsAssigned?.length || "Loading..."}
           </li>
           <li className="list-group-item">
             <b>Students-Id</b> -{" "}
             {mentor?.studentsAssigned?.map((student, index) => (
               <>
-                <h6>{student}</h6>
+                <h6>{student || "Loading..."}</h6>
               </>
             ))}
           </li>

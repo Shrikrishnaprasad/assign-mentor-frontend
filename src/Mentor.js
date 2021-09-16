@@ -21,7 +21,7 @@ export default function Mentor() {
     };
 
     // getting all the mentors
-    fetch("http://localhost:5000/mentor/", {
+    fetch("https://assign-mentor-and-students.herokuapp.com/mentor/", {
       method: "GET",
       headers: headersList
     })
@@ -35,7 +35,7 @@ export default function Mentor() {
       .catch((e) => console.log(e));
 
     // getting all the students with not assigned
-    fetch("http://localhost:5000/student/", {
+    fetch("https://assign-mentor-and-students.herokuapp.com/student/", {
       method: "GET",
       headers: headersList
     })
@@ -62,13 +62,16 @@ export default function Mentor() {
       Accept: "*/*",
       "Content-Type": "application/json"
     };
-    fetch(`http://localhost:5000/mentor/assignStudents/${mentor.value}`, {
-      method: "POST",
-      body: JSON.stringify({
-        students: students.map((value) => value.value)
-      }),
-      headers: headersList
-    })
+    fetch(
+      `https://assign-mentor-and-students.herokuapp.com/mentor/assignStudents/${mentor.value}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          students: students.map((value) => value.value)
+        }),
+        headers: headersList
+      }
+    )
       .then(function (response) {
         return response.json();
       })
@@ -155,7 +158,9 @@ export default function Mentor() {
             ))
           ) : (
             <tr>
-              <h2 className="text-center">Loading...</h2>
+              <td>
+                <h2 className="text-center">Loading...</h2>
+              </td>
             </tr>
           )}
         </tbody>

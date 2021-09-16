@@ -14,7 +14,7 @@ export default function TabContent({ tab1 }) {
         Accept: "*/*",
         "Content-Type": "application/json"
       };
-      fetch("http://localhost:5000/student/create", {
+      fetch("https://assign-mentor-and-students.herokuapp.com/student/create", {
         method: "POST",
         body: JSON.stringify({ name: studentName, email: studentEmail }),
         headers: headersList
@@ -39,7 +39,7 @@ export default function TabContent({ tab1 }) {
         Accept: "*/*",
         "Content-Type": "application/json"
       };
-      fetch("http://localhost:5000/mentor/create", {
+      fetch("https://assign-mentor-and-students.herokuapp.com/mentor/create", {
         method: "POST",
         body: JSON.stringify({ name: mentorName, email: mentorEmail }),
         headers: headersList

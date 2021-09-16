@@ -17,7 +17,7 @@ export default function Students() {
     };
 
     // getting all the mentors
-    fetch("http://localhost:5000/mentor/", {
+    fetch("https://assign-mentor-and-students.herokuapp.com/mentor/", {
       method: "GET",
       headers: headersList
     })
@@ -31,10 +31,13 @@ export default function Students() {
       .catch((e) => console.log(e));
 
     // getting all the students with assigned
-    fetch("http://localhost:5000/student/isAssigned/", {
-      method: "GET",
-      headers: headersList
-    })
+    fetch(
+      "https://assign-mentor-and-students.herokuapp.com/student/isAssigned/",
+      {
+        method: "GET",
+        headers: headersList
+      }
+    )
       .then(function (response) {
         return response.json();
       })
@@ -58,13 +61,16 @@ export default function Students() {
       Accept: "*/*",
       "Content-Type": "application/json"
     };
-    fetch(`http://localhost:5000/student/changeMentor/${student.value}`, {
-      method: "POST",
-      body: JSON.stringify({
-        mentorId: mentor.value
-      }),
-      headers: headersList
-    })
+    fetch(
+      `https://assign-mentor-and-students.herokuapp.com/student/changeMentor/${student.value}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          mentorId: mentor.value
+        }),
+        headers: headersList
+      }
+    )
       .then(function (response) {
         return response.json();
       })
@@ -150,7 +156,9 @@ export default function Students() {
             ))
           ) : (
             <tr>
-              <h2 className="text-center">Loading...</h2>
+              <td>
+                <h2 className="text-center">Loading...</h2>
+              </td>
             </tr>
           )}
         </tbody>
